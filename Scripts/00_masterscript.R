@@ -14,9 +14,6 @@
 # More infomation about the Hospitalization Nowcast Hub:
 # https://github.com/KITmetricslab/hospitalization-nowcast-hub
 
-# Set working directory
-setwd(dir = here())
-
 # Run
 source(file = "Scripts/01_initialise.R")
 source(file = "Scripts/02_import_raw_data.R")
