@@ -1,5 +1,5 @@
 #
-# Nowcasting German hospitalizations
+# Nowcasting German COVID-19 hospitalizations
 #
 # Author:
 # Jan van de Kassteele
@@ -14,7 +14,6 @@
 # More infomation about the Hospitalization Nowcast Hub:
 # https://github.com/KITmetricslab/hospitalization-nowcast-hub
 
-# Run
 source(file = "Scripts/01_initialise.R")
 source(file = "Scripts/02_import_raw_data.R")
 source(file = "Scripts/03_apply_location_age_group_filter.R")
