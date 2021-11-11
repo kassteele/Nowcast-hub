@@ -20,7 +20,7 @@ Sys.setlocale(category = "LC_TIME", locale = "en_US.UTF-8")
 options(lubridate.week.start = 1)
 
 # Set number of cores for bam
-n_cores <- 8
+n_cores <- 4
 
 # Number of Monte Carlo simulations for nowcast
 n_sim <- 1000
