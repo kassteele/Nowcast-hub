@@ -3,4 +3,23 @@
 #
 
 # Load packages
+library(here)
 library(cronR)
+
+# Add cron job
+# Log will be made in same dir as automated_submission.R
+cron_add(
+  command = cron_rscript(
+    rscript = here("Automation/automated_submission.R")),
+  frequency = "daily",
+  at = "7:00",
+  id = "nowcast_hub",
+  ask = FALSE)
+
+# List cron jobs
+cron_ls()
+
+# Remove nowcast_hub job
+cron_rm(
+  id = "nowcast_hub",
+  ask = FALSE)
