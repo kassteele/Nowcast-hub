@@ -2,69 +2,74 @@
 # Automated submission
 #
 
-#
 # Load packages
 library(here)
 library(gert)
 
+# 1. Fork the repos on GitHub
 
-# # First fork the repos on GitHub
-# # You have to do this only once
-#
-# # Before cloning, be sure hospitalization-nowcast-hub does not exist
-# unlink(
-#   here("hospitalization-nowcast-hub"),
-#   recursive = TRUE)
-#
-# # Clone into folder hospitalization-nowcast-hub
-# git_clone(
-#   url = "git@github.com:kassteele/hospitalization-nowcast-hub.git",
-#   path = here("hospitalization-nowcast-hub"))
+# 2. Clone into folder hospitalization-nowcast-hub
+if (!file.exists(here("hospitalization-nowcast-hub"))) {
+  git_clone(
+    url = "git@github.com:kassteele/hospitalization-nowcast-hub.git",
+    path = here("hospitalization-nowcast-hub"))
+}
+
+# 3. Add upstream (= KITmetricslab/hospitalization-nowcast-hub)
+if (!any(git_remote_list()$name == "upstream")) {
+  git_remote_add(
+    url = "git@github.com:KITmetricslab/hospitalization-nowcast-hub.git",
+    name = "upstream")
+}
+
+# Set dir to local repos
+setwd(
+  dir = here("hospitalization-nowcast-hub"))
 
 # Pull remote repository into the current local branch
 git_pull(
-  repo = here("hospitalization-nowcast-hub"))
+  remote = "upstream",
+  rebase = TRUE)
 
 # Create local submission branch and check out
 git_branch_create(
-  branch = "submission",
-  repo = here("hospitalization-nowcast-hub"))
+  branch = "submission")
+
+# Set dir to RStudio project dir
+setwd(
+  dir = here())
 
 # Run the masterscript that does all calculations
-source(file = here("Scripts/00_masterscript.R"))
+source(file = "Scripts/00_masterscript.R")
 
 # Copy (new) files to hospitalization-nowcast-hub/data-processed/RIVM-KEW
 file.copy(
   from = list.files(here("Export"), full.names = TRUE),
   to = here("hospitalization-nowcast-hub/data-processed/RIVM-KEW"))
 
+# Set dir to local repos
+setwd(
+  dir = here("hospitalization-nowcast-hub"))
+
 # Stage added file(s)
 git_add(
-  file = ".",
-  repo = here("hospitalization-nowcast-hub"))
+  file = ".")
 
 # Commit
 git_commit(
-  message = paste0("RIVM-KEW submission ", Sys.Date()),
-  repo = here("hospitalization-nowcast-hub"))
+  message = paste0("RIVM-KEW submission ", Sys.Date()))
 
-# Push to my repository
-git_push(
-  repo = here("hospitalization-nowcast-hub"))
+# Push to my repository (origin)
+git_push()
 
 # Create pull request
-# This is still a bit ugly with the setwd
-setwd(dir = here("hospitalization-nowcast-hub"))
 system(
   command = paste0("gh pr create --title \"RIVM-KEW submission ", Sys.Date(), "\" --body \"RIVM-KEW submission\""))
-setwd(dir = here())
 
 # Go back to main branch
 git_branch_checkout(
-  branch = "main",
-  repo = here("hospitalization-nowcast-hub"))
+  branch = "main")
 
 # Remove local submission branch
 git_branch_delete(
-  branch = "submission",
-  repo = here("hospitalization-nowcast-hub"))
+  branch = "submission")
