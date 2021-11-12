@@ -2,6 +2,9 @@
 # Tidy data
 #
 
+# Show progress
+messsage("Tidy data")
+
 reporting_data <- reporting_data_raw %>%
   mutate(
     # Convert characters location and age_group to factors

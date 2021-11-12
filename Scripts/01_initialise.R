@@ -2,6 +2,9 @@
 # Initialisation
 #
 
+# Show progress
+messsage("Initialisation")
+
 # Load packages
 library(tidyverse)
 library(lubridate)

@@ -2,6 +2,9 @@
 # Make data for fitting
 #
 
+# Show progress
+messsage("Make data for fitting")
+
 reporting_fit_data <- reporting_data %>%
   filter(
     # Only use dates back to 2*max(delay) from forecast_date

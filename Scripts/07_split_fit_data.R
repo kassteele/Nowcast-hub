@@ -2,6 +2,9 @@
 # Split fit data
 #
 
+# Show progress
+messsage("Split fit data")
+
 # The dataset for fitting is split into three parts
 # Each split gets its own model and nowcast
 # Between the parentheses is the number of groups

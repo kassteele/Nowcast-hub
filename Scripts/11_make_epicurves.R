@@ -1,8 +1,11 @@
 #
-# Create epicurves
+# Make epicurves
 #
 
-# The epicurve containts the entire time series in reporting_data
+# Show progress
+messsage("Make epicurves")
+
+# The epicurve contains the entire time series in reporting_data
 # combined with the nowcasted hospitalizations in data_nowcast
 
 epicurve_data <- list(

@@ -2,6 +2,9 @@
 # Export csv file
 #
 
+# Show progress
+messsage("Export csv file")
+
 # Specifications:
 # https://github.com/KITmetricslab/hospitalization-nowcast-hub/wiki/Data-format
 

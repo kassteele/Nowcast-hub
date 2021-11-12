@@ -2,6 +2,9 @@
 # Truncate reporting triangle
 #
 
+# Show progress
+messsage("Truncate reporting triangle")
+
 # The reporting triangle is truncated up to forecast_date
 # In a real-time setting this happens naturally
 # n_rep is set to NA if date + delay > forecast_date

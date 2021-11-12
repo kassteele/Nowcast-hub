@@ -2,6 +2,9 @@
 # Plot epicurves
 #
 
+# Show progress
+messsage("Plot epicurves")
+
 plot_epicurves <- map(
   .x = epicurve_data %>%
     split(

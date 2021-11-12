@@ -1,6 +1,9 @@
 #
-# Fit model not DE 00
+# Fit gam model not DE 00
 #
+
+# Show progress
+messsage("Fit gam model not DE 00")
 
 reporting_gam_notDE_00 <- bam(
   formula = n_rep ~

@@ -2,6 +2,9 @@
 # Combine nowcasts
 #
 
+# Show progress
+messsage("Combine nowcasts")
+
 # We assume nowcast_data_DE_00 is always there
 nowcast_data <- nowcast_data_DE_00
 

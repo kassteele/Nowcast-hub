@@ -2,6 +2,9 @@
 # Plot reporting triangles
 #
 
+# Show progress
+messsage("Plot reporting triangles")
+
 # Create plots
 plot_reporting_triangles <- map(
   .x = reporting_data %>%
