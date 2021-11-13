@@ -3,7 +3,7 @@
 #
 
 # Show progress
-messsage("Make data for fitting")
+message("Make data for fitting")
 
 reporting_fit_data <- reporting_data %>%
   filter(

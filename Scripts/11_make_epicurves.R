@@ -3,7 +3,7 @@
 #
 
 # Show progress
-messsage("Make epicurves")
+message("Make epicurves")
 
 # The epicurve contains the entire time series in reporting_data
 # combined with the nowcasted hospitalizations in data_nowcast

@@ -3,7 +3,7 @@
 #
 
 # Show progress
-messsage("Export csv file")
+message("Export csv file")
 
 # Specifications:
 # https://github.com/KITmetricslab/hospitalization-nowcast-hub/wiki/Data-format

@@ -3,7 +3,7 @@
 #
 
 # Show progress
-messsage("Make nowcast not DE 00")
+message("Make nowcast not DE 00")
 
 nowcast_data_notDE_00 <- make_nowcast(
   fitted_gam = reporting_gam_notDE_00,

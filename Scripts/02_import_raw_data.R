@@ -3,7 +3,7 @@
 #
 
 # Show progress
-messsage("Import raw data")
+message("Import raw data")
 
 # Download raw reporting data from nowcast hub
 reporting_data_raw <- read_csv(

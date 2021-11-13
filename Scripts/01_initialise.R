@@ -3,7 +3,7 @@
 #
 
 # Show progress
-messsage("Initialisation")
+message("Initialisation")
 
 # Load packages
 library(tidyverse)

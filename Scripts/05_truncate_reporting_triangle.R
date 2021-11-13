@@ -3,7 +3,7 @@
 #
 
 # Show progress
-messsage("Truncate reporting triangle")
+message("Truncate reporting triangle")
 
 # The reporting triangle is truncated up to forecast_date
 # In a real-time setting this happens naturally

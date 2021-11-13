@@ -3,7 +3,7 @@
 #
 
 # Show progress
-messsage("Split fit data")
+message("Split fit data")
 
 # The dataset for fitting is split into three parts
 # Each split gets its own model and nowcast

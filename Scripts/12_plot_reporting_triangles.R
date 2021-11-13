@@ -3,7 +3,7 @@
 #
 
 # Show progress
-messsage("Plot reporting triangles")
+message("Plot reporting triangles")
 
 # Create plots
 plot_reporting_triangles <- map(

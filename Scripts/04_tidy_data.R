@@ -3,7 +3,7 @@
 #
 
 # Show progress
-messsage("Tidy data")
+message("Tidy data")
 
 reporting_data <- reporting_data_raw %>%
   mutate(

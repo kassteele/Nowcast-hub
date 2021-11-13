@@ -3,7 +3,7 @@
 #
 
 # Show progress
-messsage("Plot epicurves")
+message("Plot epicurves")
 
 plot_epicurves <- map(
   .x = epicurve_data %>%
