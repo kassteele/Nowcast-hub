@@ -23,6 +23,9 @@ make_nowcast <- function(fitted_gam, fit_data) {
     newdata = data_outside_triangle,
     type = "lpmatrix")
 
+  # Seed seed
+  set.seed(1)
+
   # Get estimated model parameters
   # - beta is sampled from a multivariate normal distribution
   # - theta is fixed
