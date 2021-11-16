@@ -4,5 +4,6 @@
 .Ruserdata
 hospitalization-nowcast-hub/
 Figures/
-Export/
 Report/
+*.csv
+*.log
