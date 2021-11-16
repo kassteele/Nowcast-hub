@@ -15,4 +15,4 @@ reporting_gam_DE_00 <- bam(
   family = nb,
   data = reporting_fit_data_DE_00,
   discrete = TRUE,
-  nthreads = 2)
+  select = TRUE)
