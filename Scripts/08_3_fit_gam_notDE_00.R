@@ -22,4 +22,4 @@ reporting_gam_notDE_00 <- bam(
   data = reporting_fit_data_notDE_00,
   discrete = TRUE,
   select = TRUE,
-  nthreads = n_cores)
+  nthreads = 2)
