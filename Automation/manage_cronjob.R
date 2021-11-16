@@ -7,12 +7,12 @@ library(here)
 library(cronR)
 
 # Add cron job
-# Log will be made in same dir as automated_submission.R
+# Log will be added in same dir as automated_submission.R
 cron_add(
   command = cron_rscript(
     rscript = here("Automation/automated_submission.R")),
   frequency = "daily",
-  at = "7:00",
+  at = "8:00",
   id = "nowcast_hub",
   ask = FALSE)
 
