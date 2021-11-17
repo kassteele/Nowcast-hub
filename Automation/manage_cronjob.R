@@ -3,16 +3,17 @@
 #
 
 # Load packages
-library(here)
 library(cronR)
 
 # Add cron job
 # Log will be added in same dir as automated_submission.R
 cron_add(
   command = cron_rscript(
-    rscript = here("Automation/automated_submission.R")),
+    rscript = "/home/kasstvdj/Scripts/Nowcast-hub/Automation/automated_submission.R",
+    workdir = "/home/kasstvdj/Scripts/Nowcast-hub",
+    log_append = FALSE),
   frequency = "daily",
-  at = "8:00",
+  at = "12:59",
   id = "nowcast_hub",
   ask = FALSE)
 
