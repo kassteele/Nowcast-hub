@@ -26,6 +26,14 @@ if (!any(git_remote_list()$name == "upstream")) {
 setwd(
   dir = here("hospitalization-nowcast-hub"))
 
+# Be sure to start in the main branch
+git_branch_checkout(
+  branch = "main")
+
+# Remove possible leftover submission branch
+try(git_branch_delete(
+  branch = "submission"))
+
 # Pull remote repository into the current local branch
 git_pull(
   remote = "upstream",
