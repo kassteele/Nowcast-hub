@@ -6,21 +6,22 @@
 library(here)
 library(gert)
 
+# These steps should be done only once:
 # 1. Fork the repos on GitHub
-
 # 2. Clone into folder hospitalization-nowcast-hub
 if (!file.exists(here("hospitalization-nowcast-hub"))) {
   git_clone(
     url = "git@github.com:kassteele/hospitalization-nowcast-hub.git",
     path = here("hospitalization-nowcast-hub"))
 }
-
 # 3. Add upstream (= KITmetricslab/hospitalization-nowcast-hub)
 if (!any(git_remote_list()$name == "upstream")) {
   git_remote_add(
     url = "git@github.com:KITmetricslab/hospitalization-nowcast-hub.git",
     name = "upstream")
 }
+# 4. Run in terminal: gh auth login
+# Done
 
 # Set dir to local repos
 setwd(
@@ -31,6 +32,7 @@ git_branch_checkout(
   branch = "main")
 
 # Remove possible leftover submission branch
+# You can ignore the error "cannot locate local branch 'submission'"
 try(git_branch_delete(
   branch = "submission"))
 
@@ -72,7 +74,7 @@ git_push()
 
 # Create pull request
 system(
-  command = paste0("gh pr create --title \"RIVM-KEW submission ", Sys.Date(), "\" --body \"RIVM-KEW submission\""))
+  command = paste0("gh pr create --title \"RIVM-KEW submission ", Sys.Date(), "\" --body \"RIVM-KEW submission\" --repo \"KITmetricslab/hospitalization-nowcast-hub\""))
 
 # Go back to main branch
 git_branch_checkout(
