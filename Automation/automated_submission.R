@@ -50,7 +50,8 @@ setwd(
   dir = here())
 
 # Run the masterscript that does all calculations
-source(file = "Scripts/00_masterscript.R")
+source(
+  file = "Scripts/00_masterscript.R")
 
 # Copy (new) files to hospitalization-nowcast-hub/data-processed/RIVM-KEW
 file.copy(
@@ -83,3 +84,7 @@ git_branch_checkout(
 # Remove local submission branch
 git_branch_delete(
   branch = "submission")
+
+# Send confirmation SMS
+source(
+  file = "../Automation/send_sms.R")
