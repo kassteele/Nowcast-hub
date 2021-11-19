@@ -6,6 +6,7 @@
 library(cronR)
 
 # Add cron job
+# This job runs on server rs4.rivm.nl
 # Log will be added in same dir as automated_submission.R
 cron_add(
   command = cron_rscript(
@@ -13,7 +14,7 @@ cron_add(
     workdir = "/home/kasstvdj/Scripts/Nowcast-hub",
     log_append = FALSE),
   frequency = "daily",
-  at = "12:59",
+  at = "8:00",
   id = "nowcast_hub",
   ask = FALSE)
 
