@@ -2,6 +2,21 @@
 # Automated submission
 #
 
+# Before we start, first check if the raw reporting
+# triangle data has been updated
+
+# Read raw reporting data from nowcast hub
+tmp <- readLines(
+  con = "https://github.com/KITmetricslab/hospitalization-nowcast-hub/blob/main/data-truth/COVID-19/COVID-19_hospitalizations_preprocessed.csv?raw=true")
+
+# Stop if there is no new data
+if (substr(
+  x = tmp[length(tmp)], start = 1, stop = 10) != Sys.Date()) {
+  stop("Raw reporting triangle data has not been updated yet")
+}
+
+# If so, continue with automated submission
+
 # Load packages
 library(here)
 library(gert)
