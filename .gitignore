@@ -7,3 +7,4 @@ Figures/
 Report/
 *.csv
 *.log
+Automation/send_sms.R
