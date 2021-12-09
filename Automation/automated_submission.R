@@ -11,11 +11,11 @@ repeat {
     con = "https://github.com/KITmetricslab/hospitalization-nowcast-hub/blob/main/data-truth/COVID-19/COVID-19_hospitalizations_preprocessed.csv?raw=true")
 
   # If there is new data, continue with automated submission
-  # else, wait for 1 hour and try again
+  # else, wait for 30 minutes and try again
   if (substr(x = tmp[length(tmp)], start = 1, stop = 10) == Sys.Date()) {
     break
   } else {
-    Sys.sleep(time = 3600)
+    Sys.sleep(time = 1800)
   }
 
 }
