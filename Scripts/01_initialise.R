@@ -22,6 +22,9 @@ Sys.setlocale(category = "LC_TIME", locale = "en_US.UTF-8")
 # Weeks start on Monday
 options(lubridate.week.start = 1)
 
+# Set maximum delay
+max_delay <- 80L
+
 # Number of Monte Carlo simulations for nowcast
 n_sim <- 1000
 
