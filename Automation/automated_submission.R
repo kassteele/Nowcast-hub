@@ -103,6 +103,6 @@ git_branch_checkout(
 git_branch_delete(
   branch = "submission")
 
-# Send confirmation SMS
+# Send confirmation e-mail
 source(
-  file = "../Automation/send_sms.R")
+  file = "../Automation/send_e-mail.R")

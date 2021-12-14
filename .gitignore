@@ -9,3 +9,4 @@ Report/
 *.csv
 *.log
 Automation/send_sms.R
+Automation/send_e-mail.R
