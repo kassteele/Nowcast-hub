@@ -10,12 +10,15 @@ repeat {
   tmp <- readLines(
     con = "https://github.com/KITmetricslab/hospitalization-nowcast-hub/blob/main/data-truth/COVID-19/COVID-19_hospitalizations_preprocessed.csv?raw=true")
 
-  # If there is new data, continue with automated submission
-  # else, wait for 30 minutes and try again
   if (substr(x = tmp[length(tmp)], start = 1, stop = 10) == Sys.Date()) {
+    # If there is new data, continue with automated submission
     break
-  } else {
+  } else if (as.numeric(substr(x = Sys.time(), start = 12, stop = 13)) < 17) {
+    # Else, if it is before 17:00, wait for 30 minutes and try again
     Sys.sleep(time = 1800)
+  } else {
+    # Else, stop trying and quit
+    q(save = "no")
   }
 
 }
