@@ -11,7 +11,7 @@
 # J van de Kassteele, PHC Eilers, J Wallinga
 # Epidemiology, 2019, 30(5), 737
 #
-# More infomation about the Hospitalization Nowcast Hub:
+# More information about the Hospitalization Nowcast Hub:
 # https://github.com/KITmetricslab/hospitalization-nowcast-hub
 
 source(file = "Scripts/01_initialise.R")
