@@ -7,8 +7,8 @@ message("Set maximum delay")
 
 # In the raw data the maximum delay is 81 days (see script tidy_data.R)
 # where delay = 81 contains all delays >80 days
-# Here we set a maximum delay to a given value, e.g. 42 days (7 weeks),
-# and aggregate all delays >= 42 days into delay = 42
+# Here we set a maximum delay to a given value: max_delay (see script initialize.R)
+# and aggregate all delays >= max_delay into delay = max_delay
 reporting_data <- reporting_data %>%
   mutate(
     delay = if_else(
