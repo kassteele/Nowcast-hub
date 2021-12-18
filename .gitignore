@@ -5,6 +5,7 @@
 hospitalization-nowcast-hub/
 Evaluation/
 Figures/
+Presentations/
 Report/
 *.csv
 *.log
