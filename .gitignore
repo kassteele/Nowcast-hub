@@ -6,7 +6,7 @@ hospitalization-nowcast-hub/
 Evaluation/
 Figures/
 Presentations/
-Report/
+Retrospective/
 *.csv
 *.log
 Automation/send_sms.R
