@@ -2,7 +2,7 @@
 # Function to make nowcast from fitted gam and data used for fitting
 #
 
-make_nowcast <- function(fitted_gam, fit_data) {
+make_nowcast <- function(fitted_gam, fit_data, forecast_date) {
 
   # Filter records inside the reporting triangle
   # For nowcasting, in principle we only need the records where n_rep is not NA for forcast_date - max(delay)
