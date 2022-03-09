@@ -89,14 +89,14 @@ git_add(
 
 # Commit
 git_commit(
-  message = paste0("RIVM-KEW submission ", Sys.Date()))
+  message = paste0("Update nowcasts (RIVM) ", Sys.Date()))
 
 # Push to my repository (origin)
 git_push()
 
 # Create pull request
 system(
-  command = paste0("gh pr create --title \"RIVM-KEW submission ", Sys.Date(), "\" --body \"RIVM-KEW submission\" --repo \"KITmetricslab/hospitalization-nowcast-hub\""))
+  command = paste0("gh pr create --title \"Update nowcasts (RIVM) ", Sys.Date(), "\" --body \"Update nowcasts (RIVM)\" --repo \"KITmetricslab/hospitalization-nowcast-hub\""))
 
 # Go back to main branch
 git_branch_checkout(
