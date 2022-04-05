@@ -14,7 +14,7 @@ cron_add(
     workdir = "/home/kasstvdj/Scripts/Nowcast-hub",
     log_append = FALSE),
   frequency = "daily",
-  at = "6:00",
+  at = "7:00",
   id = "nowcast_hub",
   ask = FALSE)
 
