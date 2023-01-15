@@ -27,10 +27,17 @@ repeat {
 library(here)
 library(gert)
 
+# About gert, if library(gert) hangs:
+# https://cran.r-project.org/web/packages/gert/NEWS, v1.8.0
+# Sys.setenv(USE_SYSTEM_LIBGIT2 = 1)
+# install.packages("gert")
+
 # These steps should be done only once:
-# 1. Fork the repos on GitHub
-# 2. Clone into folder hospitalization-nowcast-hub
+# 1. Fork the repos hospitalization-nowcast-hub to your own GitHub
+# 2. Clone repos hospitalization-nowcast-hub into local folder hospitalization-nowcast-hub
 if (!file.exists(here("hospitalization-nowcast-hub"))) {
+  # Be sure to set dir to folder were folder hospitalization-nowcast-hub should be created
+  # If you are in Nowcast-hub.Rproj, you are ok
   git_clone(
     url = "git@github.com:kassteele/hospitalization-nowcast-hub.git",
     path = here("hospitalization-nowcast-hub"))
