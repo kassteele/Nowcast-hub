@@ -113,6 +113,9 @@ make_nowcast <- function(fitted_gam, fit_data, forecast_date) {
             MARGIN = 1,
             FUN = quantile,
             probs = c(0.025, 0.1, 0.25, 0.5, 0.75, 0.9, 0.975)) %>%
+          # The quantile function can result in non-integer counts
+          # So round the numbers
+          round() %>%
           t() %>%
           as_tibble(
             .name_repair = repair_quantile_names))
