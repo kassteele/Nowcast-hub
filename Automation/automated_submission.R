@@ -25,12 +25,6 @@ repeat {
 
 # Load packages
 library(here)
-library(gert)
-
-# About gert, if library(gert) hangs:
-# https://cran.r-project.org/web/packages/gert/NEWS, v1.8.0
-# Sys.setenv(USE_SYSTEM_LIBGIT2 = 1)
-# install.packages("gert")
 
 # These steps should be done only once:
 # 1. Fork the repos hospitalization-nowcast-hub to your own GitHub
@@ -38,48 +32,42 @@ library(gert)
 if (!file.exists(here("hospitalization-nowcast-hub"))) {
   # Be sure to set dir to folder were folder hospitalization-nowcast-hub should be created
   # If you are in Nowcast-hub.Rproj, you are ok
-  git_clone(
-    url = "git@github.com:kassteele/hospitalization-nowcast-hub.git",
-    path = here("hospitalization-nowcast-hub"))
+  dir.create(path = here("hospitalization-nowcast-hub"))
+  setwd(dir = here("hospitalization-nowcast-hub"))
+  system("git clone git@github.com:kassteele/hospitalization-nowcast-hub.git")
 }
 # 3. Add upstream (= KITmetricslab/hospitalization-nowcast-hub)
-if (!any(git_remote_list()$name == "upstream")) {
-  git_remote_add(
-    url = "git@github.com:KITmetricslab/hospitalization-nowcast-hub.git",
-    name = "upstream")
+if (!any(any(grepl("upstream", system("git remote -v", intern = TRUE))))) {
+  system("git remote add upstream git@github.com:KITmetricslab/hospitalization-nowcast-hub.git")
+  # Check, should contain
+  # origin   git@github.com:kassteele/hospitalization-nowcast-hub.git
+  # upstream git@github.com:KITmetricslab/hospitalization-nowcast-hub.git
+  system("git remote -v")
 }
 # 4. Run in terminal: gh auth login
 # Done
 
 # Set dir to local repos
-setwd(
-  dir = here("hospitalization-nowcast-hub"))
+setwd(dir = here("hospitalization-nowcast-hub"))
 
 # Be sure to start in the main branch
-git_branch_checkout(
-  branch = "main")
+system("git checkout main")
 
 # Remove possible leftover submission branch
 # You can ignore the error "cannot locate local branch 'submission'"
-try(git_branch_delete(
-  branch = "submission"))
+try(system("git branch -d submission"))
 
 # Pull remote repository into the current local branch
-git_pull(
-  remote = "upstream",
-  rebase = TRUE)
+system("git pull -r upstream")
 
 # Create local submission branch and check out
-git_branch_create(
-  branch = "submission")
+system("git checkout -b submission")
 
 # Set dir to RStudio project dir
-setwd(
-  dir = here())
+setwd(dir = here())
 
 # Run the masterscript that does all calculations
-source(
-  file = "Scripts/00_masterscript.R")
+source(file = "Scripts/00_masterscript.R")
 
 # Copy (new) files to hospitalization-nowcast-hub/data-processed/RIVM-KEW
 file.copy(
@@ -87,32 +75,25 @@ file.copy(
   to = here("hospitalization-nowcast-hub/data-processed/RIVM-KEW"))
 
 # Set dir to local repos
-setwd(
-  dir = here("hospitalization-nowcast-hub"))
+setwd(dir = here("hospitalization-nowcast-hub"))
 
 # Stage added file(s)
-git_add(
-  file = ".")
+system("git add")
 
 # Commit
-git_commit(
-  message = paste0("Update nowcasts (RIVM) ", Sys.Date()))
+system(paste0("git commit -m 'Update nowcasts (RIVM) ", Sys.Date(), "'"))
 
 # Push to my repository (origin)
-git_push()
+system("git push")
 
 # Create pull request
-system(
-  command = paste0("gh pr create --title \"Update nowcasts (RIVM) ", Sys.Date(), "\" --body \"Update nowcasts (RIVM)\" --repo \"KITmetricslab/hospitalization-nowcast-hub\""))
+system(paste0("gh pr create --title \"Update nowcasts (RIVM) ", Sys.Date(), "\" --body \"Update nowcasts (RIVM)\" --repo \"KITmetricslab/hospitalization-nowcast-hub\""))
 
 # Go back to main branch
-git_branch_checkout(
-  branch = "main")
+system("git checkout main")
 
 # Remove local submission branch
-git_branch_delete(
-  branch = "submission")
+system("git branch -d submission")
 
 # Send confirmation e-mail
-source(
-  file = "../Automation/send_e-mail.R")
+source(file = "../Automation/send_e-mail.R")
