@@ -55,12 +55,12 @@ system("git checkout main")
 
 # Remove possible leftover submission branch
 # You can ignore the error "cannot locate local branch 'submission'"
-try(system("git branch -d submission"))
+try(system("git branch -D submission"))
 
 # Pull remote repository into the current local branch
-system("git pull -r upstream")
+system("git pull upstream main")
 
-# Create local submission branch and check out
+# Create local branch "submission" and check out
 system("git checkout -b submission")
 
 # Set dir to RStudio project dir
@@ -69,31 +69,33 @@ setwd(dir = here())
 # Run the masterscript that does all calculations
 source(file = "Scripts/00_masterscript.R")
 
-# Copy (new) files to hospitalization-nowcast-hub/data-processed/RIVM-KEW
+# Copy today's file from Export folder to hospitalization-nowcast-hub/data-processed/RIVM-KEW folder
+file <- paste0(Sys.Date(), "-RIVM-KEW.csv")
 file.copy(
-  from = list.files(here("Export"), full.names = TRUE),
+  from = here("Export", file),
   to = here("hospitalization-nowcast-hub/data-processed/RIVM-KEW"))
 
 # Set dir to local repos
 setwd(dir = here("hospitalization-nowcast-hub"))
 
-# Stage added file(s)
-system("git add")
+# Stage today's file
+system(paste0("git add data-processed/RIVM-KEW/", file))
 
 # Commit
 system(paste0("git commit -m 'Update nowcasts (RIVM) ", Sys.Date(), "'"))
 
-# Push to my repository (origin)
-system("git push")
+# Push submission branch to my repository (origin)
+system("git push --set-upstream origin submission")
 
 # Create pull request
 system(paste0("gh pr create --title \"Update nowcasts (RIVM) ", Sys.Date(), "\" --body \"Update nowcasts (RIVM)\" --repo \"KITmetricslab/hospitalization-nowcast-hub\""))
 
 # Go back to main branch
 system("git checkout main")
+system("git push origin main")
 
 # Remove local submission branch
-system("git branch -d submission")
+system("git branch -D submission")
 
 # Send confirmation e-mail
 source(file = "../Automation/send_e-mail.R")
