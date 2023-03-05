@@ -43,18 +43,18 @@ plot_epicurves_common <- list(
 
 # Epicurve total
 plot_epicurves_total <- ggplot(
-  data = epicurve_data %>%
+  data = epicurve_data |>
     filter(location == "DE" & age_group == "00+")) +
   plot_epicurves_common
 
 # Epicurves by age group
 plot_epicurves_agegroup <- ggplot(
-  data = epicurve_data %>%
+  data = epicurve_data |>
     filter(location == "DE" & age_group != "00+")) +
   plot_epicurves_common
 
 # Epicurves by location
 plot_epicurves_location <- ggplot(
-  data = epicurve_data %>%
+  data = epicurve_data |>
     filter(location != "DE" & age_group == "00+")) +
   plot_epicurves_common

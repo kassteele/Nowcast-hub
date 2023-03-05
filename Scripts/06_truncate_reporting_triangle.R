@@ -10,7 +10,7 @@ message("Truncate reporting triangle")
 # n_rep is set to NA if date + delay > forecast_date
 # If not, n_rep is equal to n_true
 # This forced trunction is useful for evaluating the nowcast retrospectively
-reporting_data <- reporting_data %>%
+reporting_data <- reporting_data |>
   mutate(
     n_rep = if_else(
       condition = date + delay > forecast_date,

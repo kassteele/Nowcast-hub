@@ -38,18 +38,18 @@ plot_reporting_triangles_common <- list(
 
 # Reporting triangle total
 plot_reporting_triangles_total <- ggplot(
-  data = reporting_data %>%
+  data = reporting_data |>
     filter(location == "DE" & age_group == "00+")) +
   plot_reporting_triangles_common
 
 # Reporting triangles by age group
 plot_reporting_triangles_agegroup <- ggplot(
-  data = reporting_data %>%
+  data = reporting_data |>
     filter(location == "DE" & age_group != "00+")) +
   plot_reporting_triangles_common
 
 # Reporting triangles by location
 plot_reporting_triangles_location <- ggplot(
-  data = reporting_data %>%
+  data = reporting_data |>
     filter(location != "DE" & age_group == "00+")) +
   plot_reporting_triangles_common
