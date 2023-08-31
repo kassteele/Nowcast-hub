@@ -7,7 +7,6 @@ message("Initialisation")
 
 # Load packages
 library(tidyverse)
-library(lubridate)
 library(colorspace)
 library(mgcv)
 
